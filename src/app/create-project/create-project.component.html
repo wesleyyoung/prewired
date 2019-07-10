@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="projects"></ion-back-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>
+      New Project
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input type="text" clearInput [(ngModel)]="newProject.title" name="title"></ion-input>
+    </ion-item>
+    <ion-item inset="true">
+      <ion-label position="floating">Job Type</ion-label>
+      <ion-input type="text" clearInput [(ngModel)]="newProject.type" name="type"></ion-input>
+    </ion-item>
+    <ion-item inset="true">
+      <ion-label position="floating">Location</ion-label>
+      <ion-input type="text" clearInput [(ngModel)]="newProject.location" name="location"></ion-input>
+    </ion-item>
+    <ion-item inset="true">
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea clearInput [(ngModel)]="newProject.description" name="description"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)="create()" color="success">Create</ion-button>
+</ion-content>

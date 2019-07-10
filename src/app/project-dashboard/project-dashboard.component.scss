@@ -1,0 +1,27 @@
+.comment-blurb {
+    margin: 0;
+    width: 100%;
+}
+
+.comment-blurb > ion-card-content {
+    padding: 10px;
+}
+
+.comment-blurb > ion-card-content > ion-textarea {
+    border-left: solid rgba(200, 200, 200, .6) 1px;
+    border-bottom: solid rgba(200, 200, 200, .6) 1px;
+    transition: all ease 1s;
+}
+
+.comment-blurb > ion-card-content > ion-textarea:focus {
+    border-left: solid #3880ff 1px;
+    border-bottom: solid #3880ff 1px;
+}
+
+.comment > ion-label > ion-text > h3 {
+    margin-bottom: 10px;
+}
+
+.comment > ion-label > span {
+    color: rgb(150, 150, 150);
+}

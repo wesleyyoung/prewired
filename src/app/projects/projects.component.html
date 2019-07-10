@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Projects
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="../createProject" fill="outline" color="success">
+        <ion-icon slot="start" name="add"></ion-icon>
+        New
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar color="light"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let proj of projects" [routerLink]="'../project/' + proj.id">
+      <ion-label>
+        <ion-text>
+          <h1>{{proj.title}}</h1>
+        </ion-text>
+        <p>{{proj.location}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

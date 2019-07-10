@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="projects"></ion-back-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>
+      Build {{project.title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar></ion-searchbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let room of project.rooms.reverse()">
+      <ion-item-options slot="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item>
+        <ion-label>
+          <ion-text>
+            <h2>{{room.name}}</h2>
+          </ion-text>
+          <p>{{room.description}}</p>
+        </ion-label>
+        <ion-buttons slot="end">
+          <ion-button>
+            Edit
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-button color="success" fill="solid" expand="full" (click)="addRoom()">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Add Room
+    </ion-button>
+  </ion-toolbar>
+
+</ion-footer>

@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button routerLink="../../../projects">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{project.title}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        Edit
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card color="light">
+    <ion-card-header style="text-align: center">
+      <h1>{{project.location}}</h1>
+      <p>{{project.type}}</p>
+      <ion-card-content>
+        <p>
+          {{project.description}}
+        </p>
+        <br>
+        <p>
+          <ion-button expand="block" routerLink="../build" fill="solid" color="success">
+            <ion-icon slot="start" name="construct"></ion-icon>
+            Build
+          </ion-button>
+        </p>
+      </ion-card-content>
+    </ion-card-header>
+  </ion-card>
+  <ion-button color="primary" expand="full" *ngIf="!clockedIn" (click)="toggleClock()">Clock In</ion-button>
+  <ion-button color="danger" expand="full" *ngIf="clockedIn" (click)="toggleClock()">Clock Out</ion-button>
+  <ion-button color="primary" expand="full" routerLink="../upload">Upload Photos</ion-button>
+  <ion-item color="light">
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="text" clearInput name="inviteEmail" [(ngModel)]="sendToEmail"></ion-input>
+  </ion-item>
+  <ion-button color="secondary" expand="full" (click)="invite()">Send Invite</ion-button>
+  <ion-list>
+    <ion-item *ngIf="project.comments.length == 0" color="light">
+      <ion-label text-wrap>
+        <p>No comments yet...</p>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let comment of project.comments" color="light" class="comment">
+      <ion-label text-wrap>
+        <ion-text color="primary">
+          <h3>{{ comment.author }}</h3>
+        </ion-text>
+        <p>{{ comment.text }}</p>
+        <span>{{ comment.date }}</span>
+      </ion-label>
+    </ion-item>
+    <ion-item color="light">
+      <ion-card color="light" class="comment-blurb">
+        <ion-card-content>
+          <ion-label color="primary">Comment</ion-label>
+          <ion-textarea autoGrow="true" clearInput name="comment" [(ngModel)]="newComment"></ion-textarea>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+    <ion-button expand="full" fill="solid" color="primary" (click)="submitComment()">
+      Submit
+    </ion-button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button routerLink="../login">
+        Login
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Signup
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-slides #slider pager="false" [options]="slideOpts">
+    <ion-slide>
+      <ion-grid>
+        <ion-row>
+          <ion-list style="width: 100%">
+            <h1 style="text-align: center">
+              Step 1: Register Your Company
+            </h1>
+            <ion-item lines="full">
+              <ion-label position="floating">DBA</ion-label>
+              <ion-input type="text" clearInput name="name" [(ngModel)]="newAccount.name"></ion-input>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label position="floating">Billing Address</ion-label>
+              <ion-input type="text" clearInput name="address" [(ngModel)]="newAccount.address"></ion-input>
+            </ion-item>
+            <br>
+            <ion-item lines="full">
+              <ion-label>State</ion-label>
+              <ion-select interface="alert" placeholder="Select One" [(ngModel)]="newAccount.state">
+                <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label position="floating">Zip Code</ion-label>
+              <ion-input type="text" clearInput name="zip-code" [(ngModel)]="newAccount.zip"></ion-input>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label position="floating">Phone</ion-label>
+              <ion-input type="text" clearInput name="phone" [(ngModel)]="newAccount.phone"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+        <ion-button color="primary" fill="solid" expand="full" (click)="slideNext()">
+          Next
+        </ion-button>
+      </ion-grid>
+
+    </ion-slide>
+    <ion-slide>
+      <ion-grid>
+        <ion-row>
+          <ion-list style="width: 100%">
+            <h1 style="text-align: center">
+              Step 2: Create Your User
+            </h1>
+            <ion-item lines="full">
+              <ion-label position="floating">Name</ion-label>
+              <ion-input type="text" clearInput name="username" [(ngModel)]="newAccount.users[0].name"></ion-input>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label position="floating">Email</ion-label>
+              <ion-input type="text" clearInput name="email" [(ngModel)]="newAccount.users[0].email"></ion-input>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label position="floating">Phone</ion-label>
+              <ion-input type="text" clearInput name="phone" [(ngModel)]="newAccount.users[0].phone"></ion-input>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label position="floating">Password</ion-label>
+              <ion-input clearInput name="password" type="password" [(ngModel)]="newAccount.users[0].password">
+              </ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+        <ion-button color="success" fill="solid" expand="full" (click)="create()">
+          Create
+        </ion-button>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
