@@ -18,7 +18,7 @@ export class PullWireComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(() => {
-      let routeParams: any = this.activeRoute._futureSnapshot.parent.params;
+      let routeParams: any = this.activeRoute['_futureSnapshot'].parent.params;
       this.api.showLoading(() => {
         this.api.getProjectById(routeParams.id, project => {
           this.api.closeLoading();

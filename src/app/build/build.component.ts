@@ -25,7 +25,7 @@ export class BuildComponent implements OnInit {
   }
 
   loadRooms(): void {
-    let routeParams: any = this.activeRoute._futureSnapshot.parent.params;
+    let routeParams: any = this.activeRoute['_futureSnapshot'].parent.params;
     this.api.getProjectById(routeParams.id, project => {
       this.project = project;
     });

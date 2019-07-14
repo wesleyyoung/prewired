@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService, Project, Comment } from '../api.service';
 import { ProjectApiService, Collaborator } from '../project-api.service';
 import { AuthService } from '../auth/auth.service';
-import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/ngx';
+import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
 import { ActionSheetController, ToastController, Platform, LoadingController } from '@ionic/angular';
-import { File, FileEntry } from '@ionic-native/File/ngx';
+import { File, FileEntry } from '@ionic-native/file/ngx';
 import { HttpClient } from '@angular/common/http';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Storage } from '@ionic/storage';
@@ -80,7 +80,7 @@ export class ProjectPictureUploadComponent implements OnInit {
       this.loadStoredImages();
     });
     this.activeRoute.params.subscribe(() => {
-      let routeParams: any = this.activeRoute._futureSnapshot.parent.params;
+      let routeParams: any = this.activeRoute['_futureSnapshot'].parent.params;
       this.project_api.getProjectById(routeParams.id, project => {
         this.project = project;
       });

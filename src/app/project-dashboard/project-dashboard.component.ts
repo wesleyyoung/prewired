@@ -72,7 +72,7 @@ export class ProjectDashboardComponent implements OnInit {
       });
     });
     this.activeRoute.params.subscribe(() => {
-      let routeParams: any = this.activeRoute._futureSnapshot.parent.params;
+      let routeParams: any = this.activeRoute['_futureSnapshot'].parent.params;
       this.project_api.getProjectById(routeParams.id, project => {
         this.project = project;
         this.getCollabs();
